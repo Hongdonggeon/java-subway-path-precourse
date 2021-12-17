@@ -17,9 +17,7 @@ public class InitService {
 	}
 
 	public static void saveInitLines() {
-		List<Line> initLines = InitLine.getLineNames().stream()
-			.map(Line::new)
-			.collect(Collectors.toList());
+		List<Line> initLines = InitLine.getLineInfos();
 		LineRepository.addLines(initLines);
 	}
 }

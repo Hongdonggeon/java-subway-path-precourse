@@ -1,15 +1,28 @@
 package subway.domain;
 
-public class Line {
-    private String name;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Line(String name) {
+public class Line {
+    private static final String STATION_NAME_LENGTH_ERROR_MESSAGE = "[ERROR] 이름은 최소 두글자 이상이여야 한다.";
+
+    private String name;
+    private List<Station> stations;
+
+    public Line(String name, List<Station> stationsInLine) {
+        validateNameLength(name);
         this.name = name;
+        stations = new ArrayList<>();
+        this.stations = stationsInLine;
     }
 
     public String getName() {
         return name;
     }
 
-    // 추가 기능 구현
+    public static void validateNameLength(String name) {
+        if (name.length() < 2) {
+            throw new IllegalArgumentException(STATION_NAME_LENGTH_ERROR_MESSAGE);
+        }
+    }
 }
