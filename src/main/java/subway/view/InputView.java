@@ -9,33 +9,31 @@ public class InputView {
 	private static final String START_STATION_INPUT_ALARM = "## 출발역을 입력하세요.";
 	private static final String ARRIVAL_STATION_INPUT_ALARM = "## 도착역을 입력하세요.";
 
-	private Scanner scanner = new Scanner(System.in);
+	private static Scanner scanner = new Scanner(System.in);
 
-	public String inputString() {
+	public static String inputString() {
 		return scanner.next().trim();
 	}
 
-	public String selectMainFunction() {
+	public static String selectMainFunction() {
 		System.out.println(MAIN_FUNCTION_ALARM);
 		System.out.println(WANTED_FUNCTION_SELECT_ALARM);
 		return inputString();
 	}
 
-	public String selectPathFunction() {
+	public static String selectPathFunction() {
 		System.out.println(PATH_FUNCTION_CRITERIA_ALARM);
 		System.out.println(WANTED_FUNCTION_SELECT_ALARM);
 		return inputString();
 	}
 
-	public String inputStartStation() {
+	public static String inputStartStation() {
 		System.out.println(START_STATION_INPUT_ALARM);
 		return inputString();
 	}
 
-	public String inputArrivalStation() {
+	public static String inputArrivalStation() {
 		System.out.println(ARRIVAL_STATION_INPUT_ALARM);
 		return inputString();
 	}
-
-
 }
