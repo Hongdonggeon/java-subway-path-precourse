@@ -23,4 +23,8 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static void addStations(List<Station> initStations) {
+        initStations.addAll(stations);
+    }
 }
