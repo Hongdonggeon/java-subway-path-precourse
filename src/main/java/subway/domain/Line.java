@@ -10,6 +10,10 @@ public class Line {
     private String name;
     private List<Station> stations;
 
+    public List<Station> getStations() {
+        return stations;
+    }
+
     public Line(String name, List<Station> stationsInLine) {
         validateNameLength(name);
         this.name = name;
