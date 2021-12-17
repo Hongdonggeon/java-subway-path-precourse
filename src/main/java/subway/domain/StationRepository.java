@@ -27,7 +27,7 @@ public class StationRepository {
     }
 
     public static void addStations(List<Station> initStations) {
-        initStations.addAll(stations);
+        stations.addAll(initStations);
     }
 
     public static Station findStation(String stationName) {
