@@ -27,7 +27,7 @@ public class LineRepository {
     }
 
     public static void addLines(List<Line> initLines){
-        initLines.addAll(lines);
+        lines.addAll(initLines);
     }
 
     public static Line findLine(String lineName) {

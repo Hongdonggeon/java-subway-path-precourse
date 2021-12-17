@@ -18,6 +18,7 @@ public enum InitLine {
 
 	InitLine(String name, List<Station> stationList) {
 		this.name = name;
+		this.stations = stationList;
 	}
 
 	public String getName() {
