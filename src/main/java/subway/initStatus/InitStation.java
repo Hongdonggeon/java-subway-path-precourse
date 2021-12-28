@@ -1,4 +1,4 @@
-package subway;
+package subway.initStatus;
 
 import java.util.Arrays;
 import java.util.List;

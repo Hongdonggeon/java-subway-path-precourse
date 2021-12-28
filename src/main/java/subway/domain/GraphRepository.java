@@ -8,7 +8,7 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
-public class SectionInfo {
+public class GraphRepository {
 	private static WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
 	private static WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
 
@@ -48,7 +48,6 @@ public class SectionInfo {
 		timeGraph.setEdgeWeight(timeGraph.addEdge(findStation("양재역"), findStation("양재시민의숲역")), 3);
 	}
 
-
 	public static int findLeastTime(Station startStation, Station endStation) {
 		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
 		return (int)dijkstraShortestPath.getPathWeight(startStation, endStation);
@@ -69,5 +68,23 @@ public class SectionInfo {
 		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
 		List<Station> vertexList = dijkstraShortestPath.getPath(startStation, arrvialStation).getVertexList();
 		return vertexList;
+	}
+
+	public static int getTimeInLeastDistance(List<Station> stations) {
+		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
+		int sum = 0;
+		for (int i = 0; i < stations.size()-1; i++) {
+			sum += dijkstraShortestPath.getPathWeight(stations.get(i), stations.get(i + 1));
+		}
+		return sum;
+	}
+
+	public static int getDistanceInLeastTime(List<Station> stations) {
+		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
+		int sum = 0;
+		for (int i = 0; i < stations.size()-1; i++) {
+			sum += dijkstraShortestPath.getPathWeight(stations.get(i), stations.get(i + 1));
+		}
+		return sum;
 	}
 }

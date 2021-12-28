@@ -42,4 +42,10 @@ public class StationRepository {
             .map(StationRepository::findStation)
             .collect(Collectors.toList());
     }
+
+    public static List<String> castingStationsToString(List<Station> stationList) {
+        return stationList.stream()
+            .map(station -> station.getName())
+            .collect(Collectors.toList());
+    }
 }

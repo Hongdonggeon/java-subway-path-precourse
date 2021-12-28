@@ -1,11 +1,11 @@
-package subway;
+package subway.initStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import subway.domain.Line;
 import subway.domain.LineRepository;
-import subway.domain.SectionInfo;
+import subway.domain.GraphRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -23,7 +23,13 @@ public class InitService {
 	}
 
 	public static void saveInitSection() {
-		SectionInfo.addVertexByStationName(StationRepository.stations());
-		SectionInfo.graphInit();
+		GraphRepository.addVertexByStationName(StationRepository.stations());
+		GraphRepository.graphInit();
+	}
+
+	public static void setInitStatus() {
+		saveInitStations();
+		saveInitLines();
+		saveInitSection();
 	}
 }
